@@ -7,7 +7,7 @@ const TodayLogs = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost/backend/get_employee_logs.php?user_id=${userId}`)
+    fetch(`http://newsun.kesug.com/backend/get_employee_logs.php?user_id=${userId}`)
       .then((res) => res.json())
       .then((data) => setLogs(Array.isArray(data) ? data : []));
   }, [userId]);
