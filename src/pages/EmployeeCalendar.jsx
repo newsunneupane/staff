@@ -12,8 +12,8 @@ export default function EmployeeCalendar() {
 
   const fetchData = async () => {
     try {
-      const usersRes = await fetch("http://localhost/backend/get_all_users.php");
-      const assignRes = await fetch("http://localhost/backend/get_shift_assignment.php");
+      const usersRes = await fetch("http://newsun.kesug.com/backend/get_all_users.php");
+      const assignRes = await fetch("http://newsun.kesug.com/backend/get_shift_assignment.php");
       const users = await usersRes.json();
       const assignData = await assignRes.json();
       setStaffList(Array.isArray(users) ? users : []);
@@ -25,7 +25,7 @@ export default function EmployeeCalendar() {
 
   const fetchReplacement = async () => {
     try {
-      const res = await fetch("http://localhost/backend/get_replacement.php");
+      const res = await fetch("http://newsun.kesug.com/backend/get_replacement.php");
       const data = await res.json();
       const map = {};
       data.forEach((r) => { map[`${r.day}-${r.shift_idx}`] = r; });
@@ -45,7 +45,7 @@ export default function EmployeeCalendar() {
   const saveReplacement = async (day, shift_idx, replaced_user_id) => {
     if (!replaced_user_id) return;
     try {
-      const res = await fetch("http://localhost/backend/save_replacement.php", {
+      const res = await fetch("http://newsun.kesug.com/backend/save_replacement.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ day, shift_idx, replaced_user_id }),
