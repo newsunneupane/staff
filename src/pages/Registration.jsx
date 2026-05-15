@@ -15,6 +15,14 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
 
+    // 🔥 ALWAYS create fresh payload
+    const payload = {
+      email: formData.email,
+      password: formData.password,
+    };
+
+    console.log("Sending payload:", payload);
+
     try {
       const response = await fetch(
         "https://newsun.kesug.com/backend/login.php",
@@ -23,7 +31,7 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         }
       );
 
@@ -72,7 +80,10 @@ const Login = () => {
               placeholder="name@company.com"
               className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
               onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
+                setFormData((prev) => ({
+                  ...prev,
+                  email: e.target.value,
+                }))
               }
               required
             />
@@ -88,7 +99,10 @@ const Login = () => {
               placeholder="••••••••"
               className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
               onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
+                setFormData((prev) => ({
+                  ...prev,
+                  password: e.target.value,
+                }))
               }
               required
             />
