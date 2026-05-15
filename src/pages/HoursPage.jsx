@@ -17,7 +17,7 @@ const HoursPage = () => {
   const fetchHours = async () => {
     try {
       const res = await fetch(
-        `http://localhost/backend/get_hours_summary.php?user_id=${userId}`
+        `http://newsun.kesug.com/backend/get_hours_summary.php?user_id=${userId}`
       );
       const text = await res.text();
       const data = JSON.parse(text);
