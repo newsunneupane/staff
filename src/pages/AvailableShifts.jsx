@@ -17,7 +17,7 @@ const AvailableShifts = () => {
 
   const fetchShifts = async () => {
     try {
-      const res = await fetch(`http://localhost/backend/get_today_shift.php?user_id=${userId}`);
+      const res = await fetch(`http://newsun.kesug.com/backend/get_today_shift.php?user_id=${userId}`);
       const data = await res.json();
       if (data.status === "success") {
         const shifts = (data.assigned_shifts || []).map((item) => {
@@ -36,7 +36,7 @@ const AvailableShifts = () => {
 
   const fetchActive = async () => {
     try {
-      const res = await fetch(`http://localhost/backend/check_active_shift.php?user_id=${userId}`);
+      const res = await fetch(`http://newsun.kesug.com/backend/check_active_shift.php?user_id=${userId}`);
       const data = await res.json();
       if (data.status === "active") {
         setActiveShift(Number(data.shift_idx));
@@ -51,7 +51,7 @@ const AvailableShifts = () => {
 
   const startShift = async (shiftIndex) => {
     try {
-      const res = await fetch("http://localhost/backend/start_shift.php", {
+      const res = await fetch("http://newsun.kesug.com/backend/start_shift.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId, shift: shiftMap[shiftIndex] }),
@@ -74,7 +74,7 @@ const AvailableShifts = () => {
 
   const endShift = async () => {
     try {
-      const res = await fetch("http://localhost/backend/end_shift.php", {
+      const res = await fetch("http://newsun.kesug.com/backend/end_shift.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId }),
