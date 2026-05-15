@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://newsun.kesug.comt/backend/login.php`, {
+      const response = await fetch(`http://newsun.kesug.com/backend/login.php`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
