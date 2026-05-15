@@ -15,7 +15,7 @@ const Employee = () => {
 
   const fetchEmployees = async () => {
     try {
-      const res = await fetch("http://localhost/backend/get_all_users.php");
+      const res = await fetch("http://newsun.kesug.com/backend/get_all_users.php");
       const data = await res.json();
       setStaffList(Array.isArray(data) ? data : []);
     } catch (err) {
@@ -35,8 +35,8 @@ const Employee = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = editing
-      ? "http://localhost/backend/update_employee.php"
-      : "http://localhost/backend/add_employee.php";
+      ? "http://newsun.kesug.com/backend/update_employee.php"
+      : "http://newsun.kesug.com/backend/add_employee.php";
 
     const payload = editing
       ? form
@@ -68,7 +68,7 @@ const Employee = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this employee?")) return;
     try {
-      await fetch("http://localhost/backend/delete_employee.php", {
+      await fetch("http://newsun.kesug.com/backend/delete_employee.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
