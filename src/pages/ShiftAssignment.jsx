@@ -11,14 +11,14 @@ export default function ShiftAssignment() {
   const shiftLabels = ["4AM-8AM", "8AM-6PM", "6PM-12AM", "12AM-4AM"];
 
   const fetchUsers = async () => {
-    const res = await fetch("http://localhost/backend/get_all_users.php");
+    const res = await fetch("http://newsun.kesug.com/backend/get_all_users.php");
     const data = await res.json();
     setStaffList(data);
   };
 
   const fetchAssignment = async () => {
     try {
-      const res = await fetch("http://localhost/backend/get_shift_assignment.php");
+      const res = await fetch("http://newsun.kesug.com/backend/get_shift_assignment.php");
       const data = await res.json();
       setAssignment(data || {});
     } catch (err) {
@@ -43,7 +43,7 @@ export default function ShiftAssignment() {
 
   const saveAssignment = async () => {
     try {
-      const res = await fetch("http://localhost/backend/save_shift_assignment.php", {
+      const res = await fetch("http://newsun.kesug.com/backend/save_shift_assignment.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ assignment }),
